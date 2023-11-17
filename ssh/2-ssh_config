@@ -1,15 +1,10 @@
 #!/usr/bin/env bash
-
 # SSH client configuration
-
-Host your_server_alias
-  HostName 98.98.98.98  # Replace with your actual server IP address
-  User ubuntu
-  IdentityFile ~/.ssh/school
-  PasswordAuthentication no
-
-# Additional configuration options can be added if needed
-# For example, you can set the preferred cipher or enable compression
-# Ciphers aes256-ctr
-# Compression yes
-
+# Connecting to a server without typing a password. 
+Include /etc/ssh/ssh_config.d/*.conf
+Host *
+    SendEnv LANG LC_*
+    HashKnownHosts yes
+    GSSAPIAuthentication yes
+    IdentityFile ~/.ssh/school
+    PasswordAuthentication no
